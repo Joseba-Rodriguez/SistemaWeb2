@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta  charset="utf-8">
+    <title>Reg&iacute;strate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="main.js"></script>
+
+</head>
+<body>
+    
+    <header>
+        <a href="index.html">Concesionario Gajo</a>
+    </header> 
+
+    <section>
+        <div>
+            
+            </div class="ImagenRegistro">
+                <img src="Imagenes/registro.jpg" width="1920" height="1080" ></img>
+                    
+                <div class="formularioRegistro">
+                    <div class="Registrate"><h1>Reg&iacute;strate</h1></div>
+                        <form name="registro" action="registrarse.php" method="post">
+                            <input type="text" name="email" placeholder="Introduce email (ejemplo@ejemplo.com)" >
+                            <input type="text" name="nombre" placeholder="Introduce tu nombre, ej: Joseba" >
+                            <input type="text" name="apellidos" placeholder="Introduce tus apellidos, ej: Alabort" >
+                            <input type="password" name="contraseña" placeholder="Introduce la contraseña" >
+                            <input type="text" name="telefono" placeholder="Introduce tel&eacute;fono (612345678)" >
+                            <input type="text" name="dni" placeholder="Introduce DNI (12345678A)" >
+                            <div class="FN">Fecha de nacimiento:</div> 
+                                <br></br><input type="date" name="FechaNacimiento" >
+                            <input type="button" value="Enviar" onclick="validarRegistro()" href="login.html">
+                        </form>
+
+            </div>
+        <div>
+    </section>
+
+    
+    o <a class="identificate" href="login.html">ident&iacute;ficate</a> 
+
+    <div class="footer-basic">
+        <footer>
+         <div class="social">
+                <a href="https://www.instagram.com/"><i class="icon ion-social-instagram" ><img src="Imagenes/instagram.png" alt="" width="40" class="mb-3"></i>
+            </a><a href="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome"><i class="icon ion-social-snapchat"><img src="Imagenes/snaptchat.png" alt="" width="40" class="mb-3"></i>
+            </a><a href="https://twitter.com/?lang=es"><i class="icon ion-social-twitter"><img src="Imagenes/twitter.png" alt="" width="40" class="mb-3"></i>
+            </a><a href="https://es-es.facebook.com/"><i class="icon ion-social-facebook"><img src="Imagenes/facebook.png" alt="" width="40" class="mb-3"></i></a>
+        </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+                <li class="list-inline-item"><a href="index.html">Servicios</a></li>
+                <li class="list-inline-item"><a href="index.html">Sobre nosotros</a></li>
+                <li class="list-inline-item"><a href="index.html">T&eacute;rminos</a></li>
+                <li class="list-inline-item"><a href="index.html">Política de privacida</a></li>
+            </ul>
+            <p class="copyright">GaJo © 2021</p>
+        </footer>
+    </div>
+</body>
+</html> 
