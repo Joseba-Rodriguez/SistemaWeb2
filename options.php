@@ -124,10 +124,12 @@
         $constante= $constante+1;
     
     }
-
     if($constante>0){
         echo"<script>alert('Se ha actualizado la cuenta con correo: $correoUsuario correctamente'); window.location='login.html'</script>";
     }else{
         echo"<script>window.location='login.html'</script>";
     }
 ?>
+<html>
+    
+</html>

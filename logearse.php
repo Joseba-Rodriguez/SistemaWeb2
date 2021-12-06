@@ -90,7 +90,23 @@
 
 
                        <input type="button" value="Enviar" onclick="validarOpciones()">
-                     </form>
+                     
+                       
+                       
+                       
+                       
+                    <?php   
+                       if(isset($_SESSION['correo'])){
+                           echo"<br></br> <a href='cerrarSesion.php'>cerrarSesion</a>";
+
+                       }else{
+                           echo"No hay sesion";
+                           header('Location: login.html');
+                       }
+                     
+                    ?>
+                    
+                    </form>
             </div>
         <div>
 </section>
