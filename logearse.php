@@ -2,7 +2,7 @@
     session_start(); 
     $user = "admin";
     $pass="test";
-    $host="db";
+    $host="localhost" ; #db
     $dataBase="database";
     
     $connection = mysqli_connect($host,$user,$pass,$dataBase);
@@ -14,10 +14,18 @@
     $_SESSION['correo'] = $email;
     $password = $_POST["password"];
     
-    $instruccion_SQL="SELECT * FROM tabla WHERE email='$email'";
+    $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
-    $resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
+    $instruccion_SQL->bind_param("s",$email);
+
+    $instruccion_SQL->execute();
+
+    #$instruccion_SQL="SELECT * FROM tabla WHERE email='$email'";
     
+    #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
+    
+    $resultado = $instruccion_SQL->get_result();
+
     $row= mysqli_fetch_array($resultado);
     
     if(!$resultado){

@@ -31,7 +31,7 @@ function vacio(campo)
 }
 
 function malEmail(campo){
-    var email=/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+    var email=/^[a-z0-9]+(\.[a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z]{2,3})$/;
 
     if (!email.test(campo.value)){
         alert("El correo electronico " + campo.value + " es incorrecto.");

@@ -2,7 +2,7 @@
     echo "<link rel=stylesheet href=css/styles.css>";
     $user = "admin";
     $pass="test";
-    $host="db";
+    $host="localhost" ; #db
     $dataBase="database";
     
     $connection = mysqli_connect($host,$user,$pass,$dataBase);
