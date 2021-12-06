@@ -12,6 +12,7 @@
     
     $email = $_POST["email"];
     $_SESSION['correo'] = $email;
+    $_SESSION['correo_time'] = time();
     $password = $_POST["password"];
     
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
@@ -130,5 +131,7 @@
         <p class="copyright">GaJo © 2021</p>
     </footer>
 </div>
+<meta http-equiv="refresh" content="10;url=index.html" />
+
 </body>
 </html> 
