@@ -3,7 +3,7 @@
 <?php 
     $user = "admin";
     $pass="test";
-    $host="db";
+    $host="localhost"; #db
     $dataBase="database";
     
     $connection = mysqli_connect($host,$user,$pass,$dataBase);
@@ -18,18 +18,33 @@
     $telefono = $_POST["telefono"];
     $precio = $_POST["precio"];
 
-    $comprobacion_SQL="SELECT matricula FROM tablacoches WHERE matricula='$matricula'";
+    $comprobacion_SQL= $connection->prepare("SELECT matricula FROM tablacoches WHERE matricula=?");
 
-    $resultadoComprobacion = mysqli_query($connection, $comprobacion_SQL) or die (mysqli_error($connection));
+    #$comprobacion_SQL="SELECT matricula FROM tablacoches WHERE matricula='$matricula'";
 
+    #$resultadoComprobacion = mysqli_query($connection, $comprobacion_SQL) or die (mysqli_error($connection));
+
+    $comprobacion_SQL->bind_param("s",$matricula);
+
+    $comprobacion_SQL->execute();
+
+    $resultadoComprobacion = $comprobacion_SQL->get_result();
+    
     if($resultadoComprobacion->num_rows== 0){
         
         $resultadoComprobacion->close();
-        $instruccion_SQL="INSERT INTO tablacoches (marca, modelo, caballos, matricula, telefono, precio) VALUES ('$marca','$modelo','$caballos','$matricula','$telefono','$precio')";
 
-        $resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
+        $instruccion_SQL= $connection->prepare("INSERT INTO tablacoches (marca, modelo, caballos, matricula, telefono, precio) VALUES (?,?,?,?,?,?)");
+
+        $instruccion_SQL->bind_param("ssisii", $marca ,$modelo ,$caballos ,$matricula ,$telefono ,$precio);
+
+        $resultado = $instruccion_SQL->execute();
         
-        if(!$resultado){
+        #$instruccion_SQL="INSERT INTO tablacoches (marca, modelo, caballos, matricula, telefono, precio) VALUES ('$marca','$modelo','$caballos','$matricula','$telefono','$precio')";
+
+        #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
+        
+        if(!$resultado or mysqli_error($connection)){
             echo"Hubo Algun Error";
         }else{
             echo"<script>alert('Se ha registrado correctamente'); window.location='mostrarCochesQueAlquilan.php'</script>";
