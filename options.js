@@ -34,7 +34,7 @@ function Nombremal(campo){
         return false; 
     
     } else {
-        var nombre=/^[A-Z][a-z]+/;
+        var nombre=/^[A-Za-z][a-z]+/;
 
         if(!nombre.test(campo.value)){
             alert("El nombre " + campo.value + " es incorrecto.");
