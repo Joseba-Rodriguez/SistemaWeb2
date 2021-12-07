@@ -5,15 +5,12 @@
     $host="localhost" ; #db
     $dataBase="database";
     
-    $connection = mysqli_connect($host,$user,$pass,$dataBase);
-    if ($connection->connect_error) {
-        die("Database connection failed: " . $connection->connect_error);
-    }
+    $connection = new mysqli($host,$user,$pass,$dataBase);
     
-    $email = $_POST["email"];
+    $email = $connection-> real_escape_string($_POST["email"]);
     $_SESSION['correo'] = $email;
     $_SESSION['correo_time'] = time();
-    $password = $_POST["password"];
+    $password = $connection-> real_escape_string($_POST["password"]);
     
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
@@ -27,14 +24,13 @@
     
     $resultado = $instruccion_SQL->get_result();
 
-    $row= mysqli_fetch_array($resultado);
-    
     if(!$resultado){
         echo"Hubo Algun Error";
     }else{
+        $row= $resultado->fetch_assoc();
         if($resultado->num_rows == 1){
-            if($row[3]==$password){
-                echo"<script>alert('Bienvenido $row[1]')</script>";
+            if($row['contraseña']==$password){
+                echo"<script>alert('Bienvenido $row[nombre]')</script>";
             } else{
                 echo"<script>alert('Ha introducido una contraseña incorrecta'); window.location='login.html'</script>";
             }
@@ -42,6 +38,7 @@
             echo"<script>alert('La cuenta no existe o hay problemas con su cuenta'); window.location='singup.html'</script>";
         }
     }
+    $instruccion_SQL->close();
     
 ?>
 

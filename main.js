@@ -2,7 +2,7 @@ function validarRegistro(){
     if(malEmail(document.registro.email)) return;
     if(malNombre(document.registro.nombre)) return;
     if(malApellido(document.registro.apellidos)) return;
-    if(vacio(document.registro.contraseña)) return;
+    if(malContra(document.registro.contraseña)) return;
     if(malTLF(document.registro.telefono)) return;
     if(malDNI(document.registro.dni)) return;
     if(malFecha(document.registro.FechaNacimiento)) return;
@@ -27,6 +27,72 @@ function vacio(campo)
         campo.select();
         return true;
     }
+    return false;
+}
+
+function malContra(campo){
+    var contraseña=campo.value;
+
+    alert(contraseña + " " + contraseña.length);
+
+    if (contraseña.length < 8) {
+        alert("La contraseña debe tener una longitud de 8 o mas caracteres.");
+        campo.focus();
+        campo.select();
+        return true;
+    } else{
+        var mayus= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        
+        if(comprobador(contraseña, mayus)==false){
+            alert("La contraseña debe contener mayusculas.");
+            campo.focus();
+            campo.select();
+            return true;
+        }
+
+        var minus= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+        if(comprobador(contraseña, minus)==false){
+            alert("La contraseña debe contener minusculas.");
+            campo.focus();
+            campo.select();
+            return true;
+        }
+        
+        var num = [1,2,3,4,5,6,7,8,9,0];
+
+        if(comprobador(contraseña, num)==false){
+            alert("La contraseña debe contener numeros.");
+            campo.focus();
+            campo.select();
+            return true;
+        }
+
+        var esp= ["!","|","ª","\\","º","@","$","·","#","%","&","¬","/","(",")","*","Ç","^","¨","+","-","€"]
+
+        if(comprobador(contraseña, esp)==false){
+            alert("La contraseña debe contener caracteres extraño. Como: " + esp);
+            campo.focus();
+            campo.select();
+            return true;
+        }
+
+        return false;
+    }
+    
+}
+
+function comprobador(lista, queBuscar){
+    var texto=lista;
+    var buscar=queBuscar;
+    var cant= queBuscar.length;
+
+    for(let i=0; i<cant; i++){
+        if(texto.includes(buscar[i])==true){
+            return true;
+        }
+    }
+
     return false;
 }
 
