@@ -11,13 +11,13 @@
         die("Database connection failed: " . $connection->connect_error);
     }
     
-    $email = $_POST["email"];
-    $nombre = $_POST["nombre"];
-    $apellidos = $_POST["apellidos"];
-    $password = $_POST["contraseña"];
-    $telefono = $_POST["telefono"];
-    $DNI = $_POST["dni"];
-    $fecha = $_POST["FechaNacimiento"];
+    $email = $connection-> real_escape_string($_POST["email"]);
+    $nombre = $connection-> real_escape_string($_POST["nombre"]);
+    $apellidos = $connection-> real_escape_string($_POST["apellidos"]);
+    $password = $connection-> real_escape_string($_POST["contraseña"]);
+    $telefono = $connection-> $_POST["telefono"];
+    $DNI = $connection-> real_escape_string($_POST["dni"]);
+    $fecha = $connection-> $_POST["FechaNacimiento"];
 
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
