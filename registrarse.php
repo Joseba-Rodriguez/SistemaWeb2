@@ -15,9 +15,9 @@
     $nombre = $connection-> real_escape_string($_POST["nombre"]);
     $apellidos = $connection-> real_escape_string($_POST["apellidos"]);
     $password = $connection-> real_escape_string($_POST["contraseña"]);
-    $telefono = $connection-> $_POST["telefono"];
+    $telefono = $_POST["telefono"];
     $DNI = $connection-> real_escape_string($_POST["dni"]);
-    $fecha = $connection-> $_POST["FechaNacimiento"];
+    $fecha = $_POST["FechaNacimiento"];
 
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
