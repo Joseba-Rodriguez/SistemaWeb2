@@ -12,7 +12,7 @@ function validarRegistro(){
 
 function validarIdentificacion(){
     if(malEmail(document.identificacion.email)) return;
-    if(vacio(document.identificacion.password)) return;
+    if(malContra(document.identificacion.password)) return;
 
     document.identificacion.submit()
 }
