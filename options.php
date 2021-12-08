@@ -13,13 +13,13 @@
     
     $correoUsuario = $_SESSION['correo'];
     
-    $email = $_POST["email"];
-    $nombre = $_POST["nombre"];
-    $apellidos = $_POST["apellidos"];
-    $password = $_POST["contraseña"];
-    $telefono = $_POST["telefono"];
-    $DNI = $_POST["dni"];
-    $fecha = $_POST["FechaNacimiento"];
+    $email = htmlspecialchars( $_POST["email"]);
+    $nombre = htmlspecialchars ($_POST["nombre"]);
+    $apellidos = htmlspecialchars ($_POST["apellidos"]);
+    $password = htmlspecialchars ($_POST["contraseña"]);
+    $telefono = htmlspecialchars ($_POST["telefono"]);
+    $DNI =htmlspecialchars ($_POST["dni"]);
+    $fecha = htmlspecialchars ($_POST["FechaNacimiento"]);
     $constante=0;
     
     if(!empty($email)&& $email!=$correoUsuario)

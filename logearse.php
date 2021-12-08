@@ -148,7 +148,7 @@
         <p class="copyright">GaJo © 2021</p>
     </footer>
 </div>
-<meta http-equiv="refresh" content="10;url=index.html" />
+<meta http-equiv="refresh" content="60;url=index.html" />
 
 </body>
 </html> 
