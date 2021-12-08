@@ -28,10 +28,30 @@
         echo"Hubo Algun Error";
     }else{
         $row= $resultado->fetch_assoc();
+
         if($resultado->num_rows == 1){
+            $fecha = date("y-m-d");
+            $hora = date("H");
+            $minuto = date("i");
+            $segundo = date("s");
+
+            $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
+
             if($row['contraseña']==$password){
+                $acceso = 1;
+
+                $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
+
+                $monitor_SQL->execute();
+
                 echo"<script>alert('Bienvenido $row[nombre]')</script>";
             } else{
+                $acceso = 0;
+
+                $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
+
+                $monitor_SQL->execute();
+
                 echo"<script>alert('Ha introducido una contraseña incorrecta'); window.location='login.html'</script>";
             }
         } else {
