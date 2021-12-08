@@ -58,6 +58,7 @@
             echo"<script>alert('La cuenta no existe o hay problemas con su cuenta'); window.location='singup.html'</script>";
         }
     }
+    $monitor_SQL->close();
     $instruccion_SQL->close();
     
 ?>
@@ -110,7 +111,7 @@
                        <input type="button" value="Enviar" onclick="validarOpciones()">
                      
                        
-                       
+                    </form>   
                        
                        
                     <?php   
@@ -124,7 +125,6 @@
                      
                     ?>
                     
-                    </form>
             </div>
         <div>
 </section>

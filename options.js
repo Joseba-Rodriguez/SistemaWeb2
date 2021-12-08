@@ -1,7 +1,8 @@
 function validarOpciones(){
     if(Emailmal(document.opciones.email)) return;
     if(Nombremal(document.opciones.nombre)) return;
-    if(Contramal(documen.opciones.contraseña)) return;
+    if(Apellidomal(document.opciones.apellidos)) return;
+    //if(Contramal(documen.opciones.contraseña)) return;
     if(TLFmal(document.opciones.telefono)) return;
     if(DNImal(document.opciones.dni)) return;
     if(Fechamal(document.opciones.FechaNacimiento)) return;
@@ -20,6 +21,25 @@ function Emailmal(campo){
 
         if (!email.test(campo.value)){
             alert("El correo electronico " + campo.value + " es incorrecto.");
+            campo.focus();
+            campo.select();
+            return true;
+        }
+        return false;
+    }
+}
+
+function Apellidomal(campo){
+    var camp=campo.value;
+    
+    if(camp.length==0){
+        return false; 
+    
+    } else {
+        var nombre=/^[A-Za-z][a-z]+/;
+
+        if(!nombre.test(campo.value)){
+            alert("El apellido " + campo.value + " es incorrecto.");
             campo.focus();
             campo.select();
             return true;
