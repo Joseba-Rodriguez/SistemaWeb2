@@ -12,7 +12,7 @@
         die("Database connection failed: " . $connection->connect_error);
     }
     
-    $matricula =$_GET["id"];
+    $matricula =htmlspecialchars($_GET["id"]);
     
     if(empty($matricula)){
     $matricula=$_POST["matricula"];

@@ -11,13 +11,13 @@
         die("Database connection failed: " . $connection->connect_error);
     }
     
-    $email = $connection-> real_escape_string($_POST["email"]);
-    $nombre = $connection-> real_escape_string($_POST["nombre"]);
-    $apellidos = $connection-> real_escape_string($_POST["apellidos"]);
-    $password = $connection-> real_escape_string($_POST["contraseña"]);
-    $telefono = $_POST["telefono"];
-    $DNI = $connection-> real_escape_string($_POST["dni"]);
-    $fecha = $_POST["FechaNacimiento"];
+    $email = $connection-> real_escape_string(htmlspecialchars($_POST["email"]));
+    $nombre = $connection-> real_escape_string(htmlspecialchars($_POST["nombre"]));
+    $apellidos = $connection-> real_escape_string(htmlspecialchars($_POST["apellidos"]));
+    $password = $connection-> real_escape_string(htmlspecialchars($_POST["contraseña"]));
+    $telefono = htmlspecialchars($_POST["telefono"]);
+    $DNI = $connection-> real_escape_string(htmlspecialchars($_POST["dni"]));
+    $fecha = htmlspecialchars($_POST["FechaNacimiento"]);
 
     
     $salt = md5($password);

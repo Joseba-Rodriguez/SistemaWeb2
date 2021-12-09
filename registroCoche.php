@@ -11,12 +11,12 @@
         die("Database connection failed: " . $connection->connect_error);
     }
     
-    $marca = $_POST["marca"];
-    $modelo = $_POST["modelo"];
-    $caballos = $_POST["caballos"];
-    $matricula = $_POST["matricula"];
-    $telefono = $_POST["telefono"];
-    $precio = $_POST["precio"];
+    $marca = htmlspecialchars($_POST["marca"]);
+    $modelo = htmlspecialchars($_POST["modelo"]);
+    $caballos =htmlspecialchars( $_POST["caballos"]);
+    $matricula =htmlspecialchars( $_POST["matricula"]);
+    $telefono = htmlspecialchars($_POST["telefono"]);
+    $precio = htmlspecialchars($_POST["precio"]);
 
     $comprobacion_SQL= $connection->prepare("SELECT matricula FROM tablacoches WHERE matricula=?");
 
