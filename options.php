@@ -22,6 +22,9 @@
     $fecha = htmlspecialchars ($_POST["FechaNacimiento"]);
     $constante=0;
     
+    $salt = md5($password);
+    $pasword_encriptado = crypt($password, $salt);
+
     if(!empty($email)&& $email!=$correoUsuario)
     {
         echo("email");
@@ -81,7 +84,7 @@
         echo("password");
         $contraseña_SQL= $connection->prepare("UPDATE tabla SET contraseña = ? WHERE email = '$correoUsuario'");
 
-        $contraseña_SQL->bind_param("s", $password);
+        $contraseña_SQL->bind_param("s", $pasword_encriptado );
 
         $resultadoContraseña= $contraseña_SQL->execute();
         

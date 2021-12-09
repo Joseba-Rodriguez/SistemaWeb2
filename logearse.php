@@ -9,15 +9,19 @@
     
     $email = $connection-> real_escape_string($_POST["email"]);
     $_SESSION['correo'] = $email;
-    $_SESSION['correo_time'] = time();
+
     $password = $connection-> real_escape_string($_POST["password"]);
     
+    $salt = md5($password);
+    $pasword_encriptado = crypt($password, $salt);
+
+
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
     $instruccion_SQL->bind_param("s",$email);
 
     $instruccion_SQL->execute();
-
+    
     #$instruccion_SQL="SELECT * FROM tabla WHERE email='$email'";
     
     #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
@@ -37,7 +41,7 @@
 
             $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
 
-            if($row['contraseña']==$password){
+            if($row['contraseña']==$pasword_encriptado){
                 $acceso = 1;
 
                 $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
@@ -148,7 +152,11 @@
         <p class="copyright">GaJo © 2021</p>
     </footer>
 </div>
+
 <meta http-equiv="refresh" content="60;url=index.html" />
 
 </body>
 </html> 
+<?php
+#
+?>

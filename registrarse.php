@@ -19,6 +19,12 @@
     $DNI = $connection-> real_escape_string($_POST["dni"]);
     $fecha = $_POST["FechaNacimiento"];
 
+    
+    $salt = md5($password);
+    $pasword_encriptado = crypt($password, $salt);
+
+
+
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
     #$comprobacion_SQL="SELECT email FROM tabla WHERE email='$email'";
@@ -37,7 +43,7 @@
 
         $instruccion_SQL= $connection->prepare("INSERT INTO tabla (email, nombre, apellidos, contraseña, telefono, DNI, fecha) VALUES (?,?,?,?,?,?,?)");
 
-        $instruccion_SQL->bind_param("ssssiss", $email, $nombre, $apellidos,$password ,$telefono ,$DNI , $fecha);
+        $instruccion_SQL->bind_param("ssssiss", $email, $nombre, $apellidos,$pasword_encriptado ,$telefono ,$DNI , $fecha);
 
         $resultado = $instruccion_SQL->execute();
 
