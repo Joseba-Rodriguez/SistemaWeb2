@@ -108,7 +108,7 @@ function Contramal(campo){
                 return true;
             }
 
-            var esp= ["!","|","ª","\\","º","@","$","·","#","%","&","¬","/","(",")","*","Ç","^","¨","+","-","€"]
+            var esp= ["!","|","ª","\\","º","@","$","·","#","%","&","¬","/","(",")","*","Ç","^","¨","+","-","€","."]
 
             if(comprobador(camp, esp)==false){
                 alert("La contraseña debe contener caracteres extraño. Como: " + esp);

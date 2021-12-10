@@ -11,7 +11,7 @@
     $_SESSION['correo'] = $email;
 
     $password = $connection-> real_escape_string($_POST["password"]);
-    
+
     $salt = md5($password);
     $pasword_encriptado = crypt($password, $salt);
 
@@ -107,6 +107,7 @@
                         <input type="password" name="contraseña" placeholder="Introduce la nueva contraseña ">
                         <input type="text" name="telefono" placeholder="Introduce el nuevo tel&eacute;fono (612345678)">
                         <input type="text" name="dni" placeholder="Introduce DNI (12345678A)">
+                        <input type="text" name="cuenta" placeholder="Introduce el nuevo número de cuenta">
                         <h7>Fecha de nacimiento:</h7> <input type="date" name="FechaNacimiento">
                         
                         <br></br>
@@ -153,10 +154,10 @@
     </footer>
 </div>
 
-<meta http-equiv="refresh" content="60;url=index.html" />
+
 
 </body>
 </html> 
 <?php
-#
+#<meta http-equiv="refresh" content="60;url=index.html" />
 ?>

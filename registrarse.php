@@ -18,7 +18,7 @@
     $telefono = htmlspecialchars($_POST["telefono"]);
     $DNI = $connection-> real_escape_string(htmlspecialchars($_POST["dni"]));
     $fecha = htmlspecialchars($_POST["FechaNacimiento"]);
-
+    $cuenta = htmlspecialchars($_POST["cuenta"]);
     
     $salt = md5($password);
     $pasword_encriptado = crypt($password, $salt);
@@ -41,9 +41,9 @@
         
         $resultadoComprobacion->close();
 
-        $instruccion_SQL= $connection->prepare("INSERT INTO tabla (email, nombre, apellidos, contraseña, telefono, DNI, fecha) VALUES (?,?,?,?,?,?,?)");
+        $instruccion_SQL= $connection->prepare("INSERT INTO tabla (email, nombre, apellidos, contraseña, telefono, DNI, fecha, cuenta ) VALUES (?,?,?,?,?,?,?,?)");
 
-        $instruccion_SQL->bind_param("ssssiss", $email, $nombre, $apellidos,$pasword_encriptado ,$telefono ,$DNI , $fecha);
+        $instruccion_SQL->bind_param("ssssissi", $email, $nombre, $apellidos,$pasword_encriptado ,$telefono ,$DNI , $fecha, $cuenta);
 
         $resultado = $instruccion_SQL->execute();
 
