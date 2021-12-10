@@ -5,6 +5,7 @@ function validarRegistro(){
     if(malContra(document.registro.contraseña)) return;
     if(malTLF(document.registro.telefono)) return;
     if(malDNI(document.registro.dni)) return;
+    if(malCuenta(document.registro.cuenta)) return;
     if(malFecha(document.registro.FechaNacimiento)) return;
 
     document.registro.submit()
@@ -289,4 +290,17 @@ function malFecha(campo){
 
     return false;
 
+}
+
+function malCuenta()
+{
+    var cuenta=/^[0-9]{20}$/;
+
+    if(!cuenta.test(campo.value)){
+        alert("El numero de cuenta " + campo.value + " es incorrecto.");
+        campo.focus();
+        campo.select();
+        return true;
+    }
+    return false;
 }

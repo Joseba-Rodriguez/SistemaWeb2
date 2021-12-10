@@ -21,6 +21,7 @@
     $telefono = htmlspecialchars ($_POST["telefono"]);
     $DNI = htmlspecialchars ($_POST["dni"]);
     $fecha = htmlspecialchars ($_POST["FechaNacimiento"]);
+    $cuenta = htmlspecialchars($_POST["cuenta"]);
     $constante=0;
     
     $salt = md5($password);
@@ -28,7 +29,6 @@
 
     if(!empty($email)&& $email!=$correoUsuario)
     {
-        echo("email");
         $email_SQL= $connection->prepare("UPDATE tabla SET email = ? WHERE email = '$correoUsuario'");
 
         $email_SQL->bind_param("s", $email);
@@ -48,7 +48,6 @@
     }
     if(!empty($nombre))
     {
-        echo("nombre");
         $nombre_SQL= $connection->prepare("UPDATE tabla SET nombre = ? WHERE email = ?");
 
         $nombre_SQL->bind_param("ss", $nombre, $correoUsuario);
@@ -65,7 +64,6 @@
     }
     if(!empty($apellidos))
     {
-        echo("apellido");
         $apellidos_SQL= $connection->prepare("UPDATE tabla SET apellidos = ? WHERE email = ?");
 
         $apellidos_SQL->bind_param("ss", $apellidos, $correoUsuario);
@@ -82,7 +80,6 @@
     }
     if(!empty($password))
     {
-        echo("password");
         $contraseña_SQL= $connection->prepare("UPDATE tabla SET contraseña = ? WHERE email = ?");
 
         $contraseña_SQL->bind_param("ss", $pasword_encriptado, $correoUsuario);
@@ -99,7 +96,6 @@
     }
     if(!empty($telefono))
     {
-        echo("telefono");
         $telefono_SQL= $connection->prepare("UPDATE tabla SET telefono = ? WHERE email = ?");
 
         $telefono_SQL->bind_param("is", $telefono, $correoUsuario);
@@ -116,7 +112,6 @@
     }
     if(!empty($DNI))
     {
-        echo("dni");
         $dni_SQL= $connection->prepare("UPDATE tabla SET dni = ? WHERE email = ?");
 
         $dni_SQL->bind_param("ss", $DNI, $correoUsuario);
@@ -133,7 +128,6 @@
     }
     if(!empty($fecha))
     {
-        echo("fecha");
         $fecha_SQL= $connection->prepare("UPDATE tabla SET fecha = ? WHERE email = ?");
 
         $fecha_SQL->bind_param("ss", $fecha, $correoUsuario);
@@ -146,6 +140,20 @@
         $constante= $constante+1;
 
         $fecha_SQL->close();
+    
+    }
+
+    if(!empty($cuenta))
+    {
+        $cuenta_SQL= $connection->prepare("UPDATE tabla SET cuenta = ? WHERE email = ?");
+
+        $cuenta_SQL->bind_param("ss", $cuenta, $correoUsuario);
+
+        $resultadoCuenta= $cuenta_SQL->execute();
+    
+        $constante= $constante+1;
+
+        $cuenta_SQL->close();
     
     }
     if($constante>0){
