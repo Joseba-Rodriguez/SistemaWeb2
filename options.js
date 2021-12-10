@@ -75,7 +75,7 @@ function Contramal(campo){
     
     } else {
 
-        if (campo.length < 8) {
+        if (camp.length < 8) {
             alert("La contraseña debe tener una longitud de 8 o mas caracteres.");
             campo.focus();
             campo.select();
