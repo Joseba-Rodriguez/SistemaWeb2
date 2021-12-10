@@ -5,6 +5,7 @@ function validarOpciones(){
     if(Contramal(document.opciones.contraseña)) return;
     if(TLFmal(document.opciones.telefono)) return;
     if(DNImal(document.opciones.dni)) return;
+    if(Cuentamal(document.opciones.cuenta)) return;
     if(Fechamal(document.opciones.FechaNacimiento)) return;
 
     document.opciones.submit()
@@ -311,6 +312,26 @@ function Fechamal(campo){
             }
         }
 
+        return false;
+    }
+}
+
+function Cuentamal(campo)
+{
+    var camp=campo.value;
+    
+    if(camp.length==0){
+        return false; 
+    
+    } else {
+        var cuenta=/^[0-9]{20}$/;
+
+        if(!cuenta.test(campo.value)){
+            alert("El numero de cuenta " + campo.value + " es incorrecto.");
+            campo.focus();
+            campo.select();
+            return true;
+        }
         return false;
     }
 }
