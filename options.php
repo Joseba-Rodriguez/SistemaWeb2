@@ -12,6 +12,7 @@
     }
     
     $correoUsuario = $_SESSION['correo'];
+    $correoAnt= $_SESSION['correo'];
     
     $email = htmlspecialchars( $_POST["email"]);
     $nombre = htmlspecialchars ($_POST["nombre"]);
@@ -42,15 +43,15 @@
         #mysqli_query($connection, $email_SQL)
         #$resultadoEmail = mysqli_query($connection, $email_SQL) or die (mysqli_error($connection));
         $constante= $constante+1;
-        
+        $correoUsuario=$email;
         $email_SQL->close();
     }
     if(!empty($nombre))
     {
         echo("nombre");
-        $nombre_SQL= $connection->prepare("UPDATE tabla SET nombre = ? WHERE email = '$correoUsuario'");
+        $nombre_SQL= $connection->prepare("UPDATE tabla SET nombre = ? WHERE email = ?");
 
-        $nombre_SQL->bind_param("s", $nombre);
+        $nombre_SQL->bind_param("ss", $nombre, $correoUsuario);
 
         $resultadoNombre= $nombre_SQL->execute();
         
@@ -65,9 +66,9 @@
     if(!empty($apellidos))
     {
         echo("apellido");
-        $apellidos_SQL= $connection->prepare("UPDATE tabla SET apellidos = ? WHERE email = '$correoUsuario'");
+        $apellidos_SQL= $connection->prepare("UPDATE tabla SET apellidos = ? WHERE email = ?");
 
-        $apellidos_SQL->bind_param("s", $apellidos);
+        $apellidos_SQL->bind_param("ss", $apellidos, $correoUsuario);
 
         $apellidos_SQL->execute();
         
@@ -82,9 +83,9 @@
     if(!empty($password))
     {
         echo("password");
-        $contraseña_SQL= $connection->prepare("UPDATE tabla SET contraseña = ? WHERE email = '$correoUsuario'");
+        $contraseña_SQL= $connection->prepare("UPDATE tabla SET contraseña = ? WHERE email = ?");
 
-        $contraseña_SQL->bind_param("s", $pasword_encriptado );
+        $contraseña_SQL->bind_param("ss", $pasword_encriptado, $correoUsuario);
 
         $resultadoContraseña= $contraseña_SQL->execute();
         
@@ -99,9 +100,9 @@
     if(!empty($telefono))
     {
         echo("telefono");
-        $telefono_SQL= $connection->prepare("UPDATE tabla SET telefono = ? WHERE email = '$correoUsuario'");
+        $telefono_SQL= $connection->prepare("UPDATE tabla SET telefono = ? WHERE email = ?");
 
-        $telefono_SQL->bind_param("i", $telefono);
+        $telefono_SQL->bind_param("is", $telefono, $correoUsuario);
 
         $resultadoTelefono= $telefono_SQL->execute();
         
@@ -116,9 +117,9 @@
     if(!empty($DNI))
     {
         echo("dni");
-        $dni_SQL= $connection->prepare("UPDATE tabla SET dni = ? WHERE email = '$correoUsuario'");
+        $dni_SQL= $connection->prepare("UPDATE tabla SET dni = ? WHERE email = ?");
 
-        $dni_SQL->bind_param("s", $DNI);
+        $dni_SQL->bind_param("ss", $DNI, $correoUsuario);
 
         $resultadoDNI= $dni_SQL->execute();
         
@@ -133,9 +134,9 @@
     if(!empty($fecha))
     {
         echo("fecha");
-        $fecha_SQL= $connection->prepare("UPDATE tabla SET fecha = ? WHERE email = '$correoUsuario'");
+        $fecha_SQL= $connection->prepare("UPDATE tabla SET fecha = ? WHERE email = ?");
 
-        $fecha_SQL->bind_param("s", $fecha);
+        $fecha_SQL->bind_param("ss", $fecha, $correoUsuario);
 
         $resultadoFecha= $fecha_SQL->execute();
         
@@ -148,7 +149,7 @@
     
     }
     if($constante>0){
-        echo"<script>alert('Se ha actualizado la cuenta con correo: $correoUsuario correctamente: $constante'); window.location='login.html'</script>";
+        echo"<script>alert('Se ha actualizado la cuenta con correo: $correoAnt correctamente: $constante'); window.location='login.html'</script>";
     }else{
         echo"<script>window.location='login.html'</script>";
     }

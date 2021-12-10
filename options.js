@@ -2,7 +2,7 @@ function validarOpciones(){
     if(Emailmal(document.opciones.email)) return;
     if(Nombremal(document.opciones.nombre)) return;
     if(Apellidomal(document.opciones.apellidos)) return;
-    //if(Contramal(documen.opciones.contraseña)) return;
+    if(Contramal(document.opciones.contraseña)) return;
     if(TLFmal(document.opciones.telefono)) return;
     if(DNImal(document.opciones.dni)) return;
     if(Fechamal(document.opciones.FechaNacimiento)) return;
@@ -74,11 +74,8 @@ function Contramal(campo){
         return false; 
     
     } else {
-        var contraseña=campo.value;
 
-        alert(contraseña + " " + contraseña.length);
-
-        if (contraseña.length < 8) {
+        if (campo.length < 8) {
             alert("La contraseña debe tener una longitud de 8 o mas caracteres.");
             campo.focus();
             campo.select();
@@ -86,7 +83,7 @@ function Contramal(campo){
         } else{
             var mayus= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         
-            if(comprobador(contraseña, mayus)==false){
+            if(comprobador(camp, mayus)==false){
                 alert("La contraseña debe contener mayusculas.");
                 campo.focus();
                 campo.select();
@@ -95,7 +92,7 @@ function Contramal(campo){
 
             var minus= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-            if(comprobador(contraseña, minus)==false){
+            if(comprobador(camp, minus)==false){
                 alert("La contraseña debe contener minusculas.");
                 campo.focus();
                 campo.select();
@@ -104,7 +101,7 @@ function Contramal(campo){
         
             var num = [1,2,3,4,5,6,7,8,9,0];
 
-            if(comprobador(contraseña, num)==false){
+            if(comprobador(camp, num)==false){
                 alert("La contraseña debe contener numeros.");
                 campo.focus();
                 campo.select();
@@ -113,7 +110,7 @@ function Contramal(campo){
 
             var esp= ["!","|","ª","\\","º","@","$","·","#","%","&","¬","/","(",")","*","Ç","^","¨","+","-","€"]
 
-            if(comprobador(contraseña, esp)==false){
+            if(comprobador(camp, esp)==false){
                 alert("La contraseña debe contener caracteres extraño. Como: " + esp);
                 campo.focus();
                 campo.select();
