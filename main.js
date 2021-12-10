@@ -292,7 +292,7 @@ function malFecha(campo){
 
 }
 
-function malCuenta()
+function malCuenta(campo)
 {
     var cuenta=/^[0-9]{20}$/;
 

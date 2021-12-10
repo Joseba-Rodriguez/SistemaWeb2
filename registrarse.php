@@ -6,6 +6,8 @@
     $host="localhost"; #db
     $dataBase="database";
     
+    include 'encriptarYdesencriptar.php';
+
     $connection = mysqli_connect($host,$user,$pass,$dataBase);
     if ($connection->connect_error) {
         die("Database connection failed: " . $connection->connect_error);
@@ -22,8 +24,10 @@
     
     $salt = md5($password);
     $pasword_encriptado = crypt($password, $salt);
-
-
+     
+    #encriptamos la cuenta con la funcion creada en encriptarYdesencriptar.php
+    
+    $cuentaEnc= base64_encode($cuenta);
 
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
@@ -43,7 +47,7 @@
 
         $instruccion_SQL= $connection->prepare("INSERT INTO tabla (email, nombre, apellidos, contraseña, telefono, DNI, fecha, cuenta ) VALUES (?,?,?,?,?,?,?,?)");
 
-        $instruccion_SQL->bind_param("ssssissi", $email, $nombre, $apellidos,$pasword_encriptado ,$telefono ,$DNI , $fecha, $cuenta);
+        $instruccion_SQL->bind_param("ssssisss", $email, $nombre, $apellidos,$pasword_encriptado ,$telefono ,$DNI , $fecha, $cuentaEnc);
 
         $resultado = $instruccion_SQL->execute();
 

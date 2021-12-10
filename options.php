@@ -27,6 +27,8 @@
     $salt = md5($password);
     $pasword_encriptado = crypt($password, $salt);
 
+    $cuentaEnc= base64_encode($cuenta);
+
     if(!empty($email)&& $email!=$correoUsuario)
     {
         $email_SQL= $connection->prepare("UPDATE tabla SET email = ? WHERE email = '$correoUsuario'");
@@ -147,7 +149,7 @@
     {
         $cuenta_SQL= $connection->prepare("UPDATE tabla SET cuenta = ? WHERE email = ?");
 
-        $cuenta_SQL->bind_param("ss", $cuenta, $correoUsuario);
+        $cuenta_SQL->bind_param("ss", $cuentaEnc, $correoUsuario);
 
         $resultadoCuenta= $cuenta_SQL->execute();
     

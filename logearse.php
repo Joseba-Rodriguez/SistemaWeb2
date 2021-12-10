@@ -6,7 +6,8 @@
     $dataBase="database";
     
     $connection = new mysqli($host,$user,$pass,$dataBase);
-    
+
+
     $email = $connection-> real_escape_string($_POST["email"]);
     $_SESSION['correo'] = $email;
 
@@ -14,8 +15,7 @@
 
     $salt = md5($password);
     $pasword_encriptado = crypt($password, $salt);
-
-
+    
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
     $instruccion_SQL->bind_param("s",$email);
@@ -26,12 +26,17 @@
     
     #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
     
+    
+    
     $resultado = $instruccion_SQL->get_result();
 
     if(!$resultado){
         echo"Hubo Algun Error";
     }else{
         $row= $resultado->fetch_assoc();
+
+        $cuentaDec  = base64_decode($row['cuenta']);
+    
 
         if($resultado->num_rows == 1){
             $fecha = date("y-m-d");
@@ -64,7 +69,8 @@
     }
     $monitor_SQL->close();
     $instruccion_SQL->close();
-    
+
+
 ?>
 
 <!DOCTYPE html>
@@ -88,8 +94,8 @@
     <?php 
     
 
-    echo"<h3>Bienvenido: $email</h3>";
-    
+    echo"<h3>Bienvenido: $email </h3>";
+    echo"<h3>Número de cuenta: $cuentaDec </h3>";
     
     ?>
 
@@ -121,8 +127,8 @@
                        
                     <?php   
                        if(isset($_SESSION['correo'])){
-                           echo"<br></br> <a href='cerrarSesion.php'>cerrarSesion</a>";
-
+                           echo" <font size='6px'><a href='cerrarSesion.php' style='text-decoration: none' style='color:#FF0000;' >Cerrar sesión</a></font>";
+                          
                        }else{
                            echo"No hay sesion";
                            header('Location: login.html');
