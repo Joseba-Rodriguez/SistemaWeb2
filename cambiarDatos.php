@@ -70,20 +70,25 @@
                             <input type="text" name="telefono" placeholder="Introduce tel&eacute;fono (612345678)">
                             <input type="text" name="precio" placeholder="Introduce precio (0-99999)">
                             <input type="button" value="Enviar" onclick="validarModificacion()" href="index.php">
+                            
                         </form>
 
                         <form name="eliminarMatricula" action="eliminarCoche.php" method="post">
                             <input type="button"  value="Eliminar" onclick= "seguro()">
                             
                         </form>
+                        
             </div>
             
         <div>
 
     </section>
-    
-    <a class="identificate" href="index.php">Volver al menú</a> 
 
+    <span><a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a></span> <br> <br>
+       <a class="identificate" href="index.php">Volver al menú</a> 
+       
+       
+</div>
     <div class="footer-basic">
         <footer>
          <div class="social">

@@ -50,10 +50,10 @@
     
 ?>
 </table>
+<a href="elegirCocheParaEditar.html"><input type="submit" value="Modificar coche"></a> <br>
+<a href="index.php"><input type="submit" value="Volver al menú"></a>
 
-<a href="index.php"><input type="submit" value="Volver al menú"></a><br>
-<a href="elegirCocheParaEditar.html"><input type="submit" value="Modificar coche"></a>
-
+<a href="cerrarSesion.php"><input type="submit" value="Cerrar sesión">
 <div class="footer-basic">
         <footer>
          <div class="social">

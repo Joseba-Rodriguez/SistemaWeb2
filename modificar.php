@@ -87,7 +87,9 @@
 </section>
 <?php   
     if(isset($_SESSION['correo'])){
-        echo" <span><a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a></span>";                    
+        echo" <span><a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a></span> <br><br>
+        <a class='identificate' href='index.php'>Volver al menú</a>";   
+                    
     }else{
         echo"No hay sesion";
         header('Location: login.html');
