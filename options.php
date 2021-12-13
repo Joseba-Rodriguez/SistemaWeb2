@@ -161,7 +161,7 @@
     if($constante>0){
         echo"<script>alert('Se ha actualizado la cuenta con correo: $correoAnt correctamente')</script>";
         $_SESSION['correo']=$correoUsuario;
-        echo"<script>window.location='index.php'</script>";
+        echo"<script>window.location='modificar.php'</script>";
     }else{
         echo"<script>window.location='login.html'</script>";
     }

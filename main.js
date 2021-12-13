@@ -34,8 +34,6 @@ function vacio(campo)
 function malContra(campo){
     var contraseña=campo.value;
 
-    alert(contraseña + " " + contraseña.length);
-
     if (contraseña.length < 8) {
         alert("La contraseña debe tener una longitud de 8 o mas caracteres, ademas de mayusculas, minusculas, numeros y caracteres especiales.");
         campo.focus();
