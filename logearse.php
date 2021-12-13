@@ -159,7 +159,7 @@
     </footer>
 </div>
 
-<meta http-equiv="refresh" content="60;url=index.php" />
+<meta http-equiv="refresh" content="10;url=cerrarSesion.php" />
 
 </body>
 </html> 

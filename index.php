@@ -30,10 +30,22 @@
        <h2 id="text"><span>Concesionario</span><br>GaJo</h2>
        <div>
            <image class="imagenPrincilal" src="Imagenes/principa.jpg" width="1920" height="1080"></image>
-           <div>
-                 <div class="IdReg">
-                  <a class="identificate" href="login.html">Identif&iacute;cate</a> o
-                  <a class="identificate" href="singup.html">Reg&iacute;strate</a>
+           <div>                    
+           <div class="IdReg">
+                    <?php  
+                    session_start(); 
+                       if(isset($_SESSION['correo'])){
+                           echo" <font size='6px'><a href='cerrarSesion.php' style='text-decoration: none' style='color:#FF0000;' >Cerrar sesión</a></font>";
+                           echo "<meta http-equiv='refresh' content='60;url=cerrarSesion.php' />";
+                          
+                       }else{
+                           echo"<a class='identificate' href='login.html'>Identif&iacute;cate</a> o
+                           <a class='identificate' href='singup.html'>Reg&iacute;strate</a>";
+                          
+                       }
+                     
+                    ?>  
+           
                  </div>
            </div>
        </div>
