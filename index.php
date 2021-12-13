@@ -35,7 +35,8 @@
                     <?php  
                     session_start(); 
                        if(isset($_SESSION['correo'])){
-                           echo" <font size='6px'><a href='cerrarSesion.php' style='text-decoration: none' style='color:#FF0000;' >Cerrar sesión</a></font>";
+                           echo" <a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a> o
+                           <a class='identificate' href='modificar.php'>Modificar Datos</a>";
                            echo "<meta http-equiv='refresh' content='60;url=cerrarSesion.php' />";
                           
                        }else{
@@ -101,15 +102,16 @@
     }
 </script>
 
-<div class="referencias">
-
-    <h3>Haz <a href="registraTuCoche.html">click aqu&iacute;</a> para alquilar tu propio coche</h3> 
-            <br> </br>
-            
- <h3>Haz <a href="mostrarCochesQueAlquilan.php">click aqu&iacute;</a> para mostrar los coches alquilados</h3>
-
+<div class='referencias'>
+<?php 
+        if(isset($_SESSION['correo'])){
+            echo"<h3>Haz <a href='registraTuCoche.html'>click aqu&iacute;</a> para alquilar tu propio coche</h3> 
+                <br> </br>           
+                <h3>Haz <a href='mostrarCochesQueAlquilan.php'>click aqu&iacute;</a> para mostrar los coches alquilados</h3>";
+        }
+?>
 </div>
- 
+
 <div class="footer-basic">
     <footer>
      <div class="social">

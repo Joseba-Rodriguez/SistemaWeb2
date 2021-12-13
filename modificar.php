@@ -7,13 +7,7 @@
     
     $connection = new mysqli($host,$user,$pass,$dataBase);
 
-    $email = $connection-> real_escape_string($_POST["email"]);
-    $_SESSION['correo'] = $email;
-
-    $password = $connection-> real_escape_string($_POST["password"]);
-
-    $salt = md5($password);
-    $pasword_encriptado = crypt($password, $salt);
+    $email=$_SESSION['correo'];
     
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
@@ -25,8 +19,6 @@
     
     #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
     
-    
-    
     $resultado = $instruccion_SQL->get_result();
 
     if(!$resultado){
@@ -34,48 +26,10 @@
     }else{
         $row= $resultado->fetch_assoc();
 
-        $cuentaDec  = base64_decode($row['cuenta']);
-    
-
-        if($resultado->num_rows == 1){
-            $fecha = date("y-m-d");
-            $hora = date("H");
-            $minuto = date("i");
-            $segundo = date("s");
-
-            $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
-
-            if($row['contraseña']==$pasword_encriptado){
-                $acceso = 1;
-
-                $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
-
-                $monitor_SQL->execute();
-
-                echo"<script>alert('Bienvenido $row[nombre]'); window.location='index.php'</script>";
-            } else{
-                $acceso = 0;
-
-                $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
-
-                $monitor_SQL->execute();
-                
-                echo"<script>alert('Ha introducido una contraseña incorrecta')</script>";
-                unset($_SESSION["correo"]);
-                session_destroy();
-                
-                echo"<script>window.location='login.html';</script>";
-            }
-        } else {
-            unset($_SESSION["correo"]);
-            session_destroy();
-            echo"<script>alert('La cuenta no existe o hay problemas con su cuenta')</script>";
-            header('Location:index.php');
-        }
+        $cuentaDec  = base64_decode($row['cuenta']);    
     }
-    $monitor_SQL->close();
-    $instruccion_SQL->close();
 
+    $instruccion_SQL->close();
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +51,6 @@
     </header> 
 
     <?php 
-    
 
     echo"<h3>Bienvenido: $email </h3>";
     echo"<h3>Número de cuenta: $cuentaDec </h3>";
@@ -118,7 +71,7 @@
                         <input type="password" name="contraseña" placeholder="Introduce la nueva contraseña ">
                         <input type="text" name="telefono" placeholder="Introduce el nuevo tel&eacute;fono (612345678)">
                         <input type="text" name="dni" placeholder="Introduce DNI (12345678A)">
-                        <input type="text" name="cuenta" placeholder="Introduce el nuevo número de cuenta">
+                        <input type="text" name="cuenta" placeholder="Introduce el nuevo número de cuenta(20 digitos)">
                         <h7>Fecha de nacimiento:</h7> <input type="date" name="FechaNacimiento">
                         
                         <br></br>
@@ -128,23 +81,18 @@
                      
                        
                     </form>   
-                       
-                       
-                    <?php   
-                       if(isset($_SESSION['correo'])){
-                           echo" <font size='6px'><a href='cerrarSesion.php' style='text-decoration: none' style='color:#FF0000;' >Cerrar sesión</a></font>";
-                          
-                       }else{
-                           echo"No hay sesion";
-                           header('Location: login.html');
-                       }
-                     
-                    ?>
                     
             </div>
         <div>
 </section>
-<span><a class="identificate" href="login.html">Cerrar sesion</a></span>
+<?php   
+    if(isset($_SESSION['correo'])){
+        echo" <span><a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a></span>";                    
+    }else{
+        echo"No hay sesion";
+        header('Location: login.html');
+    }
+?>
 
 <div class="footer-basic">
     <footer>
@@ -165,7 +113,7 @@
     </footer>
 </div>
 
-<meta http-equiv="refresh" content="10;url=cerrarSesion.php" />
+<meta http-equiv="refresh" content="60;url=cerrarSesion.php" />
 
 </body>
 </html> 
