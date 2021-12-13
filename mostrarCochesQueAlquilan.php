@@ -51,7 +51,7 @@
 ?>
 </table>
 
-<a href="index.html"><input type="submit" value="Volver al menú"></a><br>
+<a href="index.php"><input type="submit" value="Volver al menú"></a><br>
 <a href="elegirCocheParaEditar.html"><input type="submit" value="Modificar coche"></a>
 
 <div class="footer-basic">
@@ -63,11 +63,11 @@
             </a><a href="https://es-es.facebook.com/"><i class="icon ion-social-facebook"><img src="Imagenes/facebook.png" alt="" width="40" class="mb-3"></i></a>
         </div>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-            <li class="list-inline-item"><a href="index.html">Servicios</a></li>
-            <li class="list-inline-item"><a href="index.html">Sobre nosotros</a></li>
-            <li class="list-inline-item"><a href="index.html">Términos</a></li>
-            <li class="list-inline-item"><a href="index.html">Política de privacida</a></li>
+            <li class="list-inline-item"><a href="index.php">Inicio</a></li>
+            <li class="list-inline-item"><a href="index.php">Servicios</a></li>
+            <li class="list-inline-item"><a href="index.php">Sobre nosotros</a></li>
+            <li class="list-inline-item"><a href="index.php">Términos</a></li>
+            <li class="list-inline-item"><a href="index.php">Política de privacida</a></li>
         </ul>
             <p class="copyright">GaJo © 2021</p>
         </footer>

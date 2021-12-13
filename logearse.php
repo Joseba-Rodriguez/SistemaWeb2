@@ -87,7 +87,7 @@
 <body>
     
     <header>
-        <a href="index.html">Concesionario Gajo</a>
+        <a href="index.php">Concesionario Gajo</a>
     </header> 
 
     <?php 
@@ -149,17 +149,17 @@
         </a><a href="https://es-es.facebook.com/"><i class="icon ion-social-facebook"><img src="Imagenes/facebook.png" alt="" width="40" class="mb-3"></i></a>
     </div>
     <ul class="list-inline">
-        <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-        <li class="list-inline-item"><a href="index.html">Servicios</a></li>
-        <li class="list-inline-item"><a href="index.html">Sobre nosotros</a></li>
-        <li class="list-inline-item"><a href="index.html">Terminos</a></li>
-        <li class="list-inline-item"><a href="index.html">Política de privacida</a></li>
+        <li class="list-inline-item"><a href="index.php">Inicio</a></li>
+        <li class="list-inline-item"><a href="index.php">Servicios</a></li>
+        <li class="list-inline-item"><a href="index.php">Sobre nosotros</a></li>
+        <li class="list-inline-item"><a href="index.php">Terminos</a></li>
+        <li class="list-inline-item"><a href="index.php">Política de privacida</a></li>
     </ul>
         <p class="copyright">GaJo © 2021</p>
     </footer>
 </div>
 
-<meta http-equiv="refresh" content="60;url=index.html" />
+<meta http-equiv="refresh" content="60;url=index.php" />
 
 </body>
 </html> 

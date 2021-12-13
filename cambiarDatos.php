@@ -37,7 +37,7 @@
 <body>
 
     <header>
-        <a href="index.html">Concesionario Gajo</a>
+        <a href="index.php">Concesionario Gajo</a>
     </header> 
 
     <section>
@@ -69,7 +69,7 @@
                             <input type="text" name="matricula" placeholder="Introduce la matr&iacute;cula con mayúsculas (1234ABC)">
                             <input type="text" name="telefono" placeholder="Introduce tel&eacute;fono (612345678)">
                             <input type="text" name="precio" placeholder="Introduce precio (0-99999)">
-                            <input type="button" value="Enviar" onclick="validarModificacion()" href="index.html">
+                            <input type="button" value="Enviar" onclick="validarModificacion()" href="index.php">
                         </form>
 
                         <form name="eliminarMatricula" action="eliminarCoche.php" method="post">
@@ -82,7 +82,7 @@
 
     </section>
     
-    <a class="identificate" href="index.html">Volver al menú</a> 
+    <a class="identificate" href="index.php">Volver al menú</a> 
 
     <div class="footer-basic">
         <footer>
@@ -93,11 +93,11 @@
             </a><a href="https://es-es.facebook.com/"><i class="icon ion-social-facebook"><img src="Imagenes/facebook.png" alt="" width="40" class="mb-3"></i></a>
         </div>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-            <li class="list-inline-item"><a href="index.html">Servicios</a></li>
-            <li class="list-inline-item"><a href="index.html">Sobre nosotros</a></li>
-            <li class="list-inline-item"><a href="index.html">Terminos</a></li>
-            <li class="list-inline-item"><a href="index.html">Política de privacida</a></li>
+            <li class="list-inline-item"><a href="index.php">Inicio</a></li>
+            <li class="list-inline-item"><a href="index.php">Servicios</a></li>
+            <li class="list-inline-item"><a href="index.php">Sobre nosotros</a></li>
+            <li class="list-inline-item"><a href="index.php">Terminos</a></li>
+            <li class="list-inline-item"><a href="index.php">Política de privacida</a></li>
         </ul>
             <p class="copyright">GaJo © 2021</p>
         </footer>

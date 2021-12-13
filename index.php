@@ -1,8 +1,7 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 
 <head>
     <title>ConcesionarioGajo</title>
@@ -22,7 +21,7 @@
 
 <body>
     <header>
-        <a href="index.html">Concesionario Gajo</a>
+        <a href="index.php">Concesionario Gajo</a>
     </header>
     
         
@@ -108,11 +107,11 @@
         </a><a href="https://es-es.facebook.com/"><i class="icon ion-social-facebook"><img src="Imagenes/facebook.png" alt="" width="40" class="mb-3"></i></a>
     </div>
     <ul class="list-inline">
-        <li class="list-inline-item"><a href="index.html">Inicio</a></li>
-        <li class="list-inline-item"><a href="index.html">Servicios</a></li>
-        <li class="list-inline-item"><a href="index.html">Sobre nosotros</a></li>
-        <li class="list-inline-item"><a href="index.html">T&eacute;rminos</a></li>
-        <li class="list-inline-item"><a href="index.html">Pol&iacute;tica de privacida</a></li>
+        <li class="list-inline-item"><a href="index.php">Inicio</a></li>
+        <li class="list-inline-item"><a href="index.php">Servicios</a></li>
+        <li class="list-inline-item"><a href="index.php">Sobre nosotros</a></li>
+        <li class="list-inline-item"><a href="index.php">T&eacute;rminos</a></li>
+        <li class="list-inline-item"><a href="index.php">Pol&iacute;tica de privacida</a></li>
     </ul>
         <p class="copyright">GaJo © 2021</p>
     </footer>
@@ -123,3 +122,4 @@
     
 </body>
 </html>
+
