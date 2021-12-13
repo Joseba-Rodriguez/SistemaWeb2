@@ -7,7 +7,6 @@
     
     $connection = new mysqli($host,$user,$pass,$dataBase);
 
-
     $email = $connection-> real_escape_string($_POST["email"]);
     $_SESSION['correo'] = $email;
 
@@ -160,10 +159,10 @@
     </footer>
 </div>
 
-
+<meta http-equiv="refresh" content="60;url=index.html" />
 
 </body>
 </html> 
 <?php
-#<meta http-equiv="refresh" content="60;url=index.html" />
+
 ?>
