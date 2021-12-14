@@ -25,11 +25,11 @@
         echo"Hubo Algun Error";
     }else{
         $row= $resultado->fetch_assoc();
-
-        $cuentaDec  = base64_decode($row['cuenta']);    
+  
+        $cuentaDec = base64_decode($row['cuenta']);
     }
 
-    $instruccion_SQL->close();
+         $instruccion_SQL->close();
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,6 @@
 
     echo"<h3>Bienvenido: $email </h3>";
     echo"<h3>Número de cuenta: $cuentaDec </h3>";
-    
     ?>
 
     <section>

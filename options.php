@@ -24,8 +24,8 @@
     $cuenta = htmlspecialchars($_POST["cuenta"]);
     $constante=0;
     
-    $salt = md5($password);
-    $pasword_encriptado = crypt($password, $salt);
+   
+    $pasword_encriptado = password_hash($password , PASSWORD_DEFAULT);
 
     $cuentaEnc= base64_encode($cuenta);
 

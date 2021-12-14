@@ -22,12 +22,11 @@
     $fecha = htmlspecialchars($_POST["FechaNacimiento"]);
     $cuenta = htmlspecialchars($_POST["cuenta"]);
     
-    $salt = md5($password);
-    $pasword_encriptado = crypt($password, $salt);
-     
-    #encriptamos la cuenta con la funcion creada en encriptarYdesencriptar.php
     
-    $cuentaEnc= base64_encode($cuenta);
+    $pasword_encriptado = password_hash($password, PASSWORD_DEFAULT);
+    
+    $cuentaEnc = base64_encode($cuenta);
+   
 
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     

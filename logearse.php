@@ -12,8 +12,7 @@
 
     $password = $connection-> real_escape_string($_POST["password"]);
 
-    $salt = md5($password);
-    $pasword_encriptado = crypt($password, $salt);
+    
     
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
@@ -33,7 +32,7 @@
         echo"Hubo Algun Error";
     }else{
         $row= $resultado->fetch_assoc();
-
+        
         $cuentaDec  = base64_decode($row['cuenta']);
     
 
@@ -45,9 +44,9 @@
 
             $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
 
-            if($row['contraseña']==$pasword_encriptado){
+            if(password_verify($password , $row['contraseña'])){
                 $acceso = 1;
-
+        
                 $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
 
                 $monitor_SQL->execute();
@@ -72,6 +71,7 @@
             echo"<script>alert('La cuenta no existe o hay problemas con su cuenta')</script>";
             header('Location:index.php');
         }
+
     }
     $monitor_SQL->close();
     $instruccion_SQL->close();
