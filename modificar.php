@@ -36,6 +36,17 @@
 
 <html lang="en">
 
+<script type="text/javascript">
+    var tiempo;
+    function ini() {
+    tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
+    }
+    function parar() {
+    clearTimeout(tiempo);
+    tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
+    }
+</script>
+
 <head>
     <meta  charset="utf-8">
     <title>Opciones</title>
@@ -44,7 +55,7 @@
     <script type="text/javascript" src="options.js"></script>
 
 </head>
-<body>
+<body onload="ini()" onkeypress="parar()" onclick="parar()">
     
     <header>
         <a href="index.php">Concesionario Gajo</a>
@@ -113,8 +124,6 @@
         <p class="copyright">GaJo © 2021</p>
     </footer>
 </div>
-
-<meta http-equiv="refresh" content="60;url=cerrarSesion.php" />
 
 </body>
 </html> 
