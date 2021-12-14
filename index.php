@@ -3,6 +3,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script type="text/javascript">
+var tiempo;
+function ini() {
+  tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
+}
+function parar() {
+  clearTimeout(tiempo);
+  tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
+}
+</script>
+
 <head>
     <title>ConcesionarioGajo</title>
     <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;600&display=swap" rel="stylesheet">
@@ -19,7 +30,16 @@
     
 </head>
 
-<body>
+<?php
+    session_start();
+    if(isset($_SESSION['correo'])){
+        echo" <body onload='ini()' onkeypress='parar()' onclick='parar()'>";
+       
+    }else{
+        echo"<body>";
+       
+    }
+?>
     <header>
         <a href="index.php">Concesionario Gajo</a>
     </header>
@@ -33,11 +53,10 @@
            <div>                    
            <div class="IdReg">
                     <?php  
-                    session_start(); 
+                    
                        if(isset($_SESSION['correo'])){
                            echo" <a class='identificate' href='cerrarSesion.php'>Cerrar sesión</a> o
                            <a class='identificate' href='modificar.php'>Modificar Datos</a>";
-                           echo "<meta http-equiv='refresh' content='60;url=cerrarSesion.php' />";
                           
                        }else{
                            echo"<a class='identificate' href='login.html'>Identif&iacute;cate</a> o
