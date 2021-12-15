@@ -4,7 +4,7 @@
     $pass="test";
     $host="localhost" ; #db
     $dataBase="database";
-    
+
     $connection = new mysqli($host,$user,$pass,$dataBase);
 
     $email=$_SESSION['correo'];
@@ -26,7 +26,7 @@
     }else{
         $row= $resultado->fetch_assoc();
   
-        $cuentaDec = base64_decode($row['cuenta']);
+       $cuentaDec = base64_decode($row['cuenta']);
     }
 
          $instruccion_SQL->close();

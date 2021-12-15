@@ -6,7 +6,6 @@
     $host="localhost"; #db
     $dataBase="database";
     
-    include 'encriptarYdesencriptar.php';
 
     $connection = mysqli_connect($host,$user,$pass,$dataBase);
     if ($connection->connect_error) {
@@ -27,7 +26,7 @@
     
     $cuentaEnc = base64_encode($cuenta);
    
-
+    echo"<script>alert('$cuenta  y $cuentaEnc' )</script>";
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
     #$comprobacion_SQL="SELECT email FROM tabla WHERE email='$email'";
