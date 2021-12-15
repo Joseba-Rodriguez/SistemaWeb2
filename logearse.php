@@ -58,7 +58,7 @@
 
         } else {
             $instruccion_SQL->close();
-            $acceso = 2;
+            $acceso = 0;
 
             $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
 
