@@ -8,11 +8,8 @@
     $connection = new mysqli($host,$user,$pass,$dataBase);
 
     $email = $connection-> real_escape_string($_POST["email"]);
-    $_SESSION['correo'] = $email;
-
+   
     $password = $connection-> real_escape_string($_POST["password"]);
-
-    
     
     $instruccion_SQL= $connection->prepare("SELECT * FROM tabla WHERE email=?");
 
@@ -24,55 +21,51 @@
     
     #$resultado = mysqli_query($connection, $instruccion_SQL) or die (mysqli_error($connection));
     
-    
-    
     $resultado = $instruccion_SQL->get_result();
-
-    if(!$resultado){
-        echo"Hubo Algun Error";
-    }else{
-        $row= $resultado->fetch_assoc();
         
-        $cuentaDec  = base64_decode($row['cuenta']);
-    
+        $fecha = date("y-m-d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+
+        $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
 
         if($resultado->num_rows == 1){
-            $fecha = date("y-m-d");
-            $hora = date("H");
-            $minuto = date("i");
-            $segundo = date("s");
+            $row= $resultado->fetch_assoc();
 
-            $monitor_SQL= $connection->prepare("INSERT INTO logueo (email, fecha, hora, minuto, segundo, acceso) VALUES (?,?,?,?,?,?)");
+            if(password_verify($password,$row['contraseña'])){
+                $instruccion_SQL->close();
 
-            if(password_verify($password , $row['contraseña'])){
                 $acceso = 1;
         
                 $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
 
                 $monitor_SQL->execute();
+                
+                $_SESSION['correo'] = $email;
 
                 echo"<script>alert('Bienvenido $row[nombre]'); window.location='index.php'</script>";
             } else{
+                $instruccion_SQL->close();
                 $acceso = 0;
 
                 $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
 
                 $monitor_SQL->execute();
                 
-                echo"<script>alert('Ha introducido una contraseña incorrecta')</script>";
-                unset($_SESSION["correo"]);
-                session_destroy();
-                
-                echo"<script>window.location='login.html';</script>";
+                echo"<script>alert('Ha introducido una contraseña incorrecta'); window.location='login.html'</script>";
             }
-        } else {
-            unset($_SESSION["correo"]);
-            session_destroy();
-            echo"<script>alert('La cuenta no existe o hay problemas con su cuenta')</script>";
-            header('Location:index.php');
-        }
 
-    }
+        } else {
+            $instruccion_SQL->close();
+            $acceso = 2;
+
+            $monitor_SQL->bind_param("ssiiii",$email, $fecha, $hora, $minuto, $segundo, $acceso);
+
+            $monitor_SQL->execute();
+
+            echo"<script>alert('La cuenta no existe'); window.location='singup.html'</script>";
+        }
     $monitor_SQL->close();
     $instruccion_SQL->close();
 

@@ -15,16 +15,7 @@
 
 <html>
 
-<script type="text/javascript">
-var tiempo;
-function ini() {
-  tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
-}
-function parar() {
-  clearTimeout(tiempo);
-  tiempo = setTimeout('location="cerrarSesion.php"',60000); // 60 segundos
-}
-</script>
+<script type="text/javascript" src="contador.js"></script>
 
 <body onload='ini()' onkeypress='parar()' onclick='parar()'>
 

@@ -25,8 +25,7 @@
     $pasword_encriptado = password_hash($password, PASSWORD_DEFAULT);
     
     $cuentaEnc = base64_encode($cuenta);
-   
-    echo"<script>alert('$cuenta  y $cuentaEnc' )</script>";
+
     $comprobacion_SQL= $connection->prepare("SELECT email FROM tabla WHERE email=?");
     
     #$comprobacion_SQL="SELECT email FROM tabla WHERE email='$email'";
